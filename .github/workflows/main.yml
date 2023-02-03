@@ -18,6 +18,7 @@ jobs:
     - name: Install Dependencies
       run: composer install 
     - name: Run Docker start Script
+      shell: 'script -q -e -c "bash {0}"'
       run: sudo  sh  run-docker.sh
 
     
