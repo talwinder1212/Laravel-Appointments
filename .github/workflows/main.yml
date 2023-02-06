@@ -21,7 +21,15 @@ jobs:
       shell: 'script -q -e -c "bash {0}"'
       run: |
        cp -rvf /demo/Laravel-Appointments/.env  /demo/actions-runner/_work/Laravel-Appointments/Laravel-Appointments/
-       sudo  sh  run-docker.sh
+           docker-compose  up -d
+
+
+            if [[ ${?} = 0 ]]
+            then
+            echo " Containers are running now"
+             fi
+
+             docker exec  demo-app  php artisan migrate   --seed
 
     
 
