@@ -8,4 +8,4 @@ then
   echo " Containers are running now"
 fi
 
-docker exec -it demo-app  php artisan migrate  --seed
+docker exec -it demo-app  php artisan migrate   --seed
