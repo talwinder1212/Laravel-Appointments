@@ -19,8 +19,9 @@ jobs:
       run: composer install 
     - name: Run Docker start Script
       run: cp -rvf /demo/Laravel-Appointments/.env  /demo/actions-runner/_work/Laravel-Appointments/Laravel-Appointments/
+    -name: Execute Scrit
       run: ./run-docker.sh
-      run: bash
+      shell: bash
       
        
 
