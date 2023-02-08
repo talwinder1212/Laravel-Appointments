@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Setup Permisions
-      run: sudo chown -R www-data:www-data .
+      run: sudo chown -R ubuntu:ubuntu .
     - uses: actions/checkout@v3
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
