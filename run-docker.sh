@@ -16,6 +16,7 @@ if  [[ ${?} = 0 ]]
 then
 echo "Waiting For Database to UP"
 docker exec demo-app  php artisan  migrate --seed > /dev/null 2>&1
+fi
 
 if [[ ${?} = 0 ]]
 then
