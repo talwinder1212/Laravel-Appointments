@@ -8,7 +8,7 @@ then
   echo "Importing database"
 fi
   while true [[ $(docker exec  demo-db  mysqladmin ping  -u root -pTest@1234 |grep "alive"  ) ==  *alive* ]]; do
-
+sleep 3
 echo "Removng Existing database"
 docker exec demo-app  php artisan  db:wipe  >/dev/null 2>&1
 if  [[ ${?} = 0 ]]
