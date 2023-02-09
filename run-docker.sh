@@ -15,10 +15,11 @@ if  [[ ${?} = 0 ]]
 then echo "Removed old Database"
 fi
 
-echo "Waiting For Database to UP"
-docker exec demo-app  php artisan  migrate --seed > /dev/null 2>&1
+
 if [[ ${?} = 0 ]]
 then
+ echo "Importing database"
+ docker exec demo-app  php artisan  migrate --seed > /dev/null 2>&1
  echo "Database Imported Sucessfully"
 exit 0
 else
