@@ -16,7 +16,7 @@ then echo "Removed old Database"
 fi
 
 echo "Waiting For Database to UP"
-docker exec demo-app  php artisan  migrate --seed > /dev/null 2>&1
+docker exec demo-app  php artisan  migrate --seed
 if [[ ${?} = 0 ]]
 then
  echo "Database Imported Sucessfully"
