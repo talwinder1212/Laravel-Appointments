@@ -1,0 +1,26 @@
+pipeline {
+ agent any
+ environment {
+     aws_account= "662624602336"
+     aws_region= "us-east-1"
+     repo_name= "eks-test-repo"
+     image_tag= "latest"
+     repo_url= "${aws_account}.dkr.ecr.${aws_region}.amazonaws.com/${repo_name}"
+}
+stages {
+stage('Logging into AWS ECR') {
+steps {
+scripts {
+sh "aws ecr get-login-password --region ${aws_region} | docker login --username AWS --password-stdin ${aws_account}.dkr.ecr.${aws_region}.amazonaws.com"
+}
+}
+}
+
+
+stage('Cloning Git Repo') {
+steps {
+checkout([$class: 'GitSCM', branches: [[name: '*/test']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/talwinder1212/Laravel-Appointments.git']]]) 
+}
+}
+}
+}
