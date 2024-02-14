@@ -15,6 +15,7 @@ pipeline {
         stage('Installing php') {
         agent {
           docker 'php:7.3'
+          args '-u root:sudo'
         }
           steps {
             sh 'php  -v'
