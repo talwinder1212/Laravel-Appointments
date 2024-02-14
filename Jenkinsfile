@@ -27,7 +27,7 @@ pipeline {
           docker 'composer:latest'
         }
           steps {
-            sh 'composer install  --working-dir=/var/lib/jenkins/workspace/laravel-test-pipeline'
+            sh 'composer install'
           }
         }
     }
