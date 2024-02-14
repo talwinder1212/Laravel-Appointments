@@ -12,22 +12,15 @@ pipeline {
                 sh 'echo "$PR_URL"'
             }
         }
-    
-        stage('node-server-check') {
-        agent { 
-            docker 'node:20.11.0-alpine3.19'
-        }
-            steps {
-                sh 'node --version'
-             
-            }
-        }
-        stage('Composer Dependicies Install') {
+        stage('Installing php') {
         agent {
-          docker 'composer:latest'
+          docker 'php:7.3'
         }
           steps {
-            sh 'composer install'
+            sh 'php  -v'
+            sh 'curl  -sS https://getcomposer.org/installer | php  -- --install-dir=/usr/bin --file-name=composer'
+            echo ' Installing Dependicies"
+            sh ' composer install'
           }
         }
     }
