@@ -19,7 +19,7 @@ pipeline {
           steps {
             sh 'php  -v'
             sh 'curl  -sS https://getcomposer.org/installer | php  -- --install-dir=/usr/bin --file-name=composer'
-            echo ' Installing Dependicies"
+            echo ' Installing Dependicies '
             sh ' composer install'
           }
         }
